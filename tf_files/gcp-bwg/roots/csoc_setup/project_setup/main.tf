@@ -63,8 +63,6 @@ module "vpc-csoc-private" {
 module "vpc-csoc-ingress" {
   source     = "../../../modules/vpc"
   project_id = "${data.terraform_remote_state.org_setup.project_id}"
-
-  #project_id   = "${data.google_project.project.id}"
   network_name = "${var.csoc_ingress_network_name}"
   create_vpc_secondary_ranges = "${var.create_vpc_secondary_ranges}"
 
@@ -123,8 +121,6 @@ module "vpc-csoc-ingress" {
 module "vpc-csoc-egress" {
   source     = "../../../modules/vpc"
   project_id = "${data.terraform_remote_state.org_setup.project_id}"
-
-  #project_id   = "${data.google_project.project.id}"
   network_name = "${var.csoc_egress_network_name}"
   create_vpc_secondary_ranges = "${var.create_vpc_secondary_ranges}"
 
@@ -243,6 +239,21 @@ module "vpc-peering-csoc_private_to_egress" {
 }
 
 ############ END CREATE VPC Peering ################################################
+/********************************************************
+*      Create Cloud NAT
+********************************************************/
+module "create_cloud_nat_csoc_private" {
+    source = "../../../modules/cloud-nat"
+    network_self_link     = "${module.vpc-csoc-private.network_self_link}"
+    project_id  = "${data.terraform_remote_state.org_setup.project_id}"
+    region       = "${var.router_region}"
+    router_name = "${var.router_name}"
+    nat_name = "${var.nat_name}"
+    nat_ip_allocate_option = "${var.nat_ip_allocate_option}"
+}
+
+
+
 ############ BEGIN CREATE FIREWALL  ################################################
 /************************************************************
  VPC-CSOC-EGRESS-RULES
@@ -534,4 +545,3 @@ module "firewall-outbound-gke" {
   target_tags    = ["${var.outbound_from_gke_target_tags}"]
 }
 ############### End Create FW Rule##############################################################################
-

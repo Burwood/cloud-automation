@@ -24,3 +24,4 @@ kube/services/fluentd/dockerlogs/
 *.cache
 *pyc
 !doc/terraform
+*.json
