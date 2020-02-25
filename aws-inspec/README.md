@@ -316,3 +316,4 @@ When you are setting up the log group you select cloudwatch log group select act
 When you stream cloudwatch logs to lambda that will create trigger on lambda.
 
 
+
