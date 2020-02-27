@@ -8,7 +8,8 @@ Example the bucket is "inspec-data" (obj = s3.Object('inspec-data',out_file)
 
 import boto3, json, time, logging
 from botocore.exceptions import ClientError
-boto3.session.Session(profile_name="default")
+from datetime import datetime
+boto3.session.Session(profile_name="burwood")
 client = boto3.client('logs', region_name="us-east-2")
 s3 = boto3.resource('s3')
 group_name = 'burwood'
@@ -20,7 +21,7 @@ while 'nextToken' in stream_batch:
     all_streams += stream_batch['logStreams']
     print(len(all_streams))
 stream_names = [stream['logStreamName'] for stream in all_streams]
-out_file = group_name + str(time.time()) + "cloud_logs.txt"
+out_file = group_name + datetime.now().strftime("%d-%m-%Y_%I-%M-%S_%p") + "cloud_logs.txt"
 for stream in stream_names:
     logs_batch = client.get_log_events(logGroupName=group_name, logStreamName=stream)
     for event in logs_batch['events']:
