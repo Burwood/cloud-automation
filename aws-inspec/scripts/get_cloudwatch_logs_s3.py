@@ -7,6 +7,7 @@ Example the bucket is "inspec-data" (obj = s3.Object('inspec-data',out_file)
 """
 
 import boto3, json, time, logging
+import botocore
 from botocore.exceptions import ClientError
 from datetime import datetime
 boto3.session.Session(profile_name="burwood")

@@ -3,6 +3,8 @@ import csv
 import os, sys
 import datetime
 import argparse
+import traceback
+
 import boto3
 from boto3 import ec2
 from botocore.exceptions import ClientError
