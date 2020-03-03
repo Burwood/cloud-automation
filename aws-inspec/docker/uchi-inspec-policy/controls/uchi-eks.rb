@@ -1,5 +1,6 @@
-title "Ensure eks cluster is not using the default Security Group"
 control "eks-cluster not using default security group" do
+  title "Ensure eks cluster is not using the default Security Group"
+  desc "Verify eks not using default security group"
   tag impact_score: 0.3
   tag severity: ['high']
   tag nist_csf: ['PR.AC-5']

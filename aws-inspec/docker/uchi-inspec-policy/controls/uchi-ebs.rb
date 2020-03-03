@@ -1,5 +1,6 @@
- title "Verify EBS volumes are encrypted"
- control "ensure ebs volumes are encrypted" do
+control "ensure ebs volumes are encrypted" do
+  title "Verify EBS volumes are encrypted"
+  desc "Verify ebs volumes are encrypted"
   tag impact_score: 0.3
   tag nist_csf: ['PR.IP-2']
   tag severity: ['high']

@@ -1,5 +1,7 @@
-title "Verify root account"
-control "uchi-cis-aws-foundation" do
+control "uchi-cis-aws-foundation-1.1" do
+  title "Verify root account"
+  desc "The 'root' account has unrestricted access to all resources in the AWS
+account"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR-DS-4']
   tag cis_aws: ['1.1']
@@ -15,15 +17,17 @@ control "uchi-cis-aws-foundation" do
   end
 end
 
-title "IAM user has password less than 90 days"
-control "uchi-cis-aws-foundation" do
- tag impact_score: 0.7
- tag nist_csf: ['PR.PT-1','PR.DS-4']
- tag cis_aws: ['1.3']
- tag nist_800_53: ['IA-5']
- tag nist_subcategory: ['PR.AC-1']
- tag env: ['test']
- tag aws_account_id: ['866696907']
+control "uchi-cis-aws-foundation-1.3" do
+  title "IAM user has password less than 90 days"
+  desc "AWS IAM users can access AWS resources using different types of
+credentials, such as passwords or access keys"
+  tag impact_score: 0.7
+  tag nist_csf: ['PR.PT-1','PR.DS-4']
+  tag cis_aws: ['1.3']
+  tag nist_800_53: ['IA-5']
+  tag nist_subcategory: ['PR.AC-1']
+  tag env: ['test']
+  tag aws_account_id: ['866696907']
 
 
    aws_iam_users.usernames.each do |usernames|
@@ -36,8 +40,10 @@ control "uchi-cis-aws-foundation" do
    end
  end
 
-title "Password policy requirement"
-control "uchi-cis-aws-foundation" do
+control "uchi-cis-aws-foundation-1.4" do
+  title "Password policy requirement"
+  desc "Access keys consist of an access key ID and secret access key, which
+are used to sign programmatic requests that you make to AWS"
   tag impact_score: 0.7
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.4']
@@ -58,8 +64,10 @@ control "uchi-cis-aws-foundation" do
   end
 end
 
-title "IAM-user-inline policies"
-control "uchi-cis-aws-foundation" do
+control "uchi-cis-aws-foundation-1.5" do
+  title "IAM-user-inline policies"
+  desc "Password policies are, in part, used to enforce password complexity
+requirements"
   tag impact_score: 0.7
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.5']
@@ -74,9 +82,10 @@ control "uchi-cis-aws-foundation" do
   end
 end
 
-title "Do not setup access keys during initial user setup for all IAM users
+control "uchi-cis-aws-foundations-1.23" do
+  title "Do not setup access keys during initial user setup for all IAM users
 that have a console password"
-control "uchi-cis-aws-foundations" do
+  desc "AWS console defaults the checkbox for creating access keys to enabled"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.23']
@@ -100,8 +109,10 @@ control "uchi-cis-aws-foundations" do
     end
   end
 
-title "Ensure IAM policies that allow full '*:*' administrative privileges are not created"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-1.24" do
+  title "Ensure IAM policies that allow full '*:*' administrative privileges are not created"
+  desc "IAM policies are the means by which privileges are granted to users,
+groups, or roles"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.24']
@@ -128,8 +139,10 @@ control "uchi-cis-aws-foundations" do
     end
   end
 
-title "Ensure IAM password policy prevents password reuse"
 control "uchi-cis-aws-foundations-1.10" do
+  title "Ensure IAM password policy prevents password reuse"
+  desc "IAM password policies can prevent the reuse of a given password by the
+same user"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.10']
@@ -149,8 +162,10 @@ control "uchi-cis-aws-foundations-1.10" do
     end if aws_iam_password_policy.exists?
   end
 
-title "Ensure IAM password policy expires passwords within number of days"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-1.11" do
+  title "Ensure IAM password policy expires passwords within number of days"
+  desc "IAM password policies can require passwords to be rotated or expired
+after a given number of days"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.11']
@@ -171,8 +186,10 @@ control "uchi-cis-aws-foundations" do
     end if aws_iam_password_policy.exists?
   end
 
-title "Ensure no root account access key exists"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-1.12" do
+  title "Ensure no root account access key exists"
+  desc "The root account is the most privileged user in an AWS account. AWS
+Access Keys provide programmatic access to a given AWS account"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.12']
@@ -187,8 +204,10 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure MFA is enabled for the 'root' account"
 control "uchi-cis-aws-foundations-1.13" do
+  title "Ensure MFA is enabled for the 'root' account"
+  desc "The root account is the most privileged user in an AWS account. MFA
+adds an extra layer of protection on top of a user name and password"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.13']
@@ -203,8 +222,10 @@ control "uchi-cis-aws-foundations-1.13" do
   end
 end
 
-title "Ensure hardware MFA is enabled for the root account"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-1.14" do
+  title "Ensure hardware MFA is enabled for the root account"
+  desc "The root account is the most privileged user in an AWS account. MFA
+adds an extra layer of protection on top of a user name and password"
   tag impact_score: 0.7
   tag nist_csf: ['PR.PT-1','PR-DS-4']
   tag cis_aws: ['1.14']
@@ -220,9 +241,11 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure multi-factor authentication (MFA) is enabled for all IAM users
+control "uchi-cis-aws-foundations-1.2" do
+  title "Ensure multi-factor authentication (MFA) is enabled for all IAM users
 that have a console password"
-control "uchi-cis-aws-foundations" do
+  desc "Multi-Factor Authentication (MFA) adds an extra layer of protection on
+top of a user name and password"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR-DS-4']
   tag cis_aws: ['1.2']
@@ -238,9 +261,11 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure a support role has been created to manage incidents with AWS
+control "uchi-cis-aws-foundations-1.22" do
+  title "Ensure a support role has been created to manage incidents with AWS
 Support"
-control "uchi-cis-aws-foundations" do
+  desc "AWS provides a support center that can be used for incident
+notification and response, as well as technical support and customer services"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.22']
@@ -255,8 +280,10 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure credentials unused for 90 days or greater are disabled"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-1.3" do
+  title "Ensure credentials unused for 90 days or greater are disabled"
+  desc "AWS IAM users can access AWS resources using different types of
+credentials, such as passwords or access keys"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.3']
@@ -289,9 +316,10 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure access keys are rotated every number of days"
-
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-1.4" do
+  title "Ensure access keys are rotated every number of days"
+  desc "Access keys consist of an access key ID and secret access key, which
+are used to sign programmatic requests that you make to AWS"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['1.4']
