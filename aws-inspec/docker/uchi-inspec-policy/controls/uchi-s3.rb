@@ -1,5 +1,6 @@
-title "Ensure there are no publicly accessible s3 buckets"
 control "s3-buckets-no-public-access" do
+  title "Ensure there are no publicly accessible S3 buckets"
+  desc "Ensure there are no publicly accessible S3 buckets"
   tag impact_score: 0.7
   tag severity: ['high']
   tag nist_csf: ['PR.PT-1','PR-DS-4']
@@ -19,13 +20,14 @@ control "s3-buckets-no-public-access" do
 end  
 
 
-title "Ensure there are no publicly accessible S3 objects"
 control "s3-objects-no-public-access" do
- tag impact_score: 0.7
- tag severity: ['high']
- tag nist_csf: ['PR.PT-1','PR-DS-4']
- tag nist_800_53: ['AU-6']
- tag nist_subcategory: ['PR.PT-1']
+  title "Ensure there are no publicly accessible S3 objects"
+  desc "Ensure there are no publicly accessible S3 objects"
+  tag impact_score: 0.7
+  tag severity: ['high']
+  tag nist_csf: ['PR.PT-1','PR-DS-4']
+  tag nist_800_53: ['AU-6']
+  tag nist_subcategory: ['PR.PT-1']
 
  aws_s3_buckets.bucket_names.each do |bucket|
 
