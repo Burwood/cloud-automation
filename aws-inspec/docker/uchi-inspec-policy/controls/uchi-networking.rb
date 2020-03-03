@@ -1,5 +1,7 @@
-title "Ensure VPC flow logging is enabled in all VPCs"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-4.3" do
+  title "Ensure VPC flow logging is enabled in all VPCs"
+  des "VPC Flow Logs is a feature that enables you to capture information
+about the IP traffic going to and from network interfaces in your VPC"
   tag impact_score: 0.7
   tag nist_csf: ['ID.AM-4','DE.CM-7' ]
   tag cis_aws: ['4.3']
@@ -29,8 +31,11 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure the default security group of every VPC restricts all traffic"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-4.4" do
+  title "Ensure the default security group of every VPC restricts all traffic"
+  desc "A VPC comes with a default security group whose initial settings deny
+all inbound traffic, allow all outbound traffic, and allow all traffic between
+instances assigned to the security group"
   tag impact_score: 0.7
   tag  nist_csf: ['PR.DS-5']
   tag cis_aws: ['4.4']
@@ -53,8 +58,10 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure routing tables for VPC peering are 'least access"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-4.5" do
+  title "Ensure routing tables for VPC peering are 'least access"
+  desc "Once a VPC peering connection is estalished, routing tables must be
+updated to establish any connections between the peered VPCs"
   tag impact_score: 0.7
   tag nist_csf: ['PR.DS-5']
   tag cis_aws: ['4.5']
