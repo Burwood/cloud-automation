@@ -1,5 +1,8 @@
-title "Ensure appropriate subscribers to each SNS topic"
-control "uhci-cis-aws-foundations" do
+control "uhci-cis-aws-foundations-3.15" do
+  title "Ensure appropriate subscribers to each SNS topic"
+  desc "AWS Simple Notification Service (SNS) is a web service that can
+publish messages from an application and immediately deliver them to
+subscribers or other applications"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['3.15']
