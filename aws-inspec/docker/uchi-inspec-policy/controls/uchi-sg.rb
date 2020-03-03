@@ -1,5 +1,6 @@
-title "Test AWS Security Groups Across All Regions For an Account Disallow FTP"
-control "uchi-aws-multi-region-security-group-ftp" do
+control "uchi-aws-multi-region-security-group-ftp-1.0" do
+  title "Test AWS Security Groups Across All Regions For an Account Disallow FTP"
+  desc "Test AWS Security Groups Across All Regions For an Account Disallow FTP"
   tag impact_score: 1.0
   tag severity: ['High']
   tag nist_csf: ['ID.AM-4','DE.CM-7']
@@ -20,8 +21,9 @@ control "uchi-aws-multi-region-security-group-ftp" do
   end
 end
 
-title "Uchi allowable default ports are opened"
 control "uchi-aws-security-group-allowable-ports" do
+  title "Uchi allowable default ports are opened"
+  desc "Uchi allowable default ports are opened"
   tag impact_score: 0.7
   tag severity: ['High']
   tag nist_csf: ['ID.AM-4','DE.CM-7']
@@ -45,8 +47,11 @@ control "uchi-aws-security-group-allowable-ports" do
   end
 end
 
-title "Ensure the default security group of every VPC restricts all traffic"
-control "uchi-cis-aws-foundation" do
+control "uchi-cis-aws-foundation-4.4" do
+  title "Ensure the default security group of every VPC restricts all traffic"
+  desc "A VPC comes with a default security group whose initial settings deny
+all inbound traffic, allow all outbound traffic, and allow all traffic between
+instances assigned to the security group"
   tag impact_score: 0.7
   tag nist_csf: ['PR.DS-5']
   tag cis_aws: ['4.4']
@@ -70,8 +75,11 @@ control "uchi-cis-aws-foundation" do
   end
 end
 
-title  "Ensure no security groups allow ingress from 0.0.0.0/0 to port 3389"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-4.2" do
+  title  "Ensure no security groups allow ingress from 0.0.0.0/0 to port 3389"
+  desc "Security groups provide stateful filtering of ingress/egress network
+traffic to AWS resources. It is recommended that no security group allows
+unrestricted ingress access to port 3389"
   tag impact_score: 0.3
   tag nist_csf: ['PR.DS-5']
   tag cis_aws: ['4.2']
@@ -89,8 +97,11 @@ control "uchi-cis-aws-foundations" do
 end
 
 
-title 'Ensure no aws_security_groups allow ingress from 0.0.0.0/0 to port 22'
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-4.1" do
+  title "Ensure no aws_security_groups allow ingress from 0.0.0.0/0 to port 22"
+  desc "Security groups provide stateful filtering of ingress/egress network
+traffic to AWS resources. It is recommended that no security group allows
+unrestricted ingress access to port 22"
   tag impact_score: 0.3
   tag nist_csf: ['PR.DS-5']
   tag cis_aws: ['4.1']
