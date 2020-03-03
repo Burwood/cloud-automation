@@ -1,5 +1,7 @@
-title "Ensure CloudTrail is enabled in all regions"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-2.1" do
+  title "Ensure CloudTrail is enabled in all regions"
+  desc  "AWS CloudTrail is a web service that records AWS API calls for your
+account and delivers log files to you"
   tag impact_score: 0.3
   tag nist_csf: ['PR.DS-1','PR.DS-2']
   tag cis_aws: ['2.1']
@@ -22,8 +24,11 @@ control "uchi-cis-aws-foundations" do
 end
 
 
-title "Ensure CloudTrail logs are encrypted at rest using KMS CMKs"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-2.7" do
+  title "Ensure CloudTrail logs are encrypted at rest using KMS CMKs"
+  desc  "AWS CloudTrail is a web service that records AWS API calls for an
+account and makes those logs available to users and resources in accordance
+with IAM policies"
   tag impact_score: 0.7
   tag nist_csf: ['PR.DS-1','PR.DS-2']
   tag cis_aws: ['2.7']
@@ -44,8 +49,11 @@ control "uchi-cis-aws-foundations" do
  end
 end
 
-title "Ensure a log metric filter and alarm exist for unauthorized API calls"
-control "uchi-cis-aws-foundation" do
+control "uchi-cis-aws-foundation-3.1" do
+  title "Ensure a log metric filter and alarm exist for unauthorized API calls"
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.7
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.1']
@@ -71,9 +79,12 @@ describe.one do
 end
 
 
-title "Ensure a log metric filter and alarm exist for AWS Config
+control "uchi-cis-aws-foundations-3.9" do
+  title "Ensure a log metric filter and alarm exist for AWS Config
 configuration changes"
-control "uchi-cis-aws-foundations" do
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.7
   tag nist_csf: ['ID.AM-1','PR.DS-3']
   tag cis_aws: ['3.9']
@@ -129,9 +140,12 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title "Ensure a log metric filter and alarm exist for S3 bucket policy
+control "uchi-cis-aws-foundations-3.8" do
+  title "Ensure a log metric filter and alarm exist for S3 bucket policy
 changes"
-control "uchi-cis-aws-foundations" do
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms "
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-5']
   tag cis_aws: ['3.8']
@@ -187,9 +201,12 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title "Ensure a log metric filter and alarm exist for disabling or scheduled
+control "uchi-cis-aws-foundations-3.7" do
+  title "Ensure a log metric filter and alarm exist for disabling or scheduled
 deletion of customer created CMKs"
-control "uchi-cis-aws-foundations" do
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.7
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.7']
@@ -245,9 +262,12 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title "Ensure a log metric filter and alarm exist for AWS Management Console
+control "uchi-cis-aws-foundations-3.6" do
+  title "Ensure a log metric filter and alarm exist for AWS Management Console
 authentication failures"
-control "uchi-cis-aws-foundations" do
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.7
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.6']
@@ -303,9 +323,12 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title "Ensure a log metric filter and alarm exist for CloudTrail
+control "uchi-cis-aws-foundations-3.5" do
+  title "Ensure a log metric filter and alarm exist for CloudTrail
 configuration changes"
-control "uchi-cis-aws-foundations" do
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.3
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.5']
@@ -361,8 +384,11 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title 'Ensure a log metric filter and alarm exist for IAM policy changes'
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-3.4" do
+  title "Ensure a log metric filter and alarm exist for IAM policy changes"
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.3
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.4']
@@ -418,8 +444,11 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title "Ensure a log metric filter and alarm exist for usage of root account"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-3.3" do
+  title "Ensure a log metric filter and alarm exist for usage of root account"
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag cis_aws: ['3.3']
@@ -475,9 +504,12 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title "Ensure a log metric filter and alarm exist for Management Console
+control "uchi-cis-aws-foundations-3.2" do
+  title "Ensure a log metric filter and alarm exist for Management Console
 sign-in without MFA"
-control "cis-aws-foundations" do
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','PR.DS-4']
   tag csc_control: ['5.5','6.0']
@@ -534,8 +566,11 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title 'Ensure a log metric filter and alarm exist for VPC changes'
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-3.14" do
+  title "Ensure a log metric filter and alarm exist for VPC changes"
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.3
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.14']
@@ -591,8 +626,11 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title 'Ensure a log metric filter and alarm exist for route table changes'
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-3.13" do
+  title "Ensure a log metric filter and alarm exist for route table changes"
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.3
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.13']
@@ -648,9 +686,13 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title 'Ensure a log metric filter and alarm exist for changes to network
-gateways'
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-3.12" do
+  title "Ensure a log metric filter and alarm exist for changes to network
+gateways"
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms. Network gateways are required to send/receive traffic to a
+destination outside of a VPC"
   tag impact_score: 0.3
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.12']
@@ -707,9 +749,12 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title "Ensure a log metric filter and alarm exist for changes to Network
+control "uchi-cis-aws-foundations-3.11" do
+  title "Ensure a log metric filter and alarm exist for changes to Network
 Access Control Lists (NACL)"
-control "uchi-cis-aws-foundations" do
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.7
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.11']
@@ -765,8 +810,11 @@ describe aws_cloudtrail_trails do
   end
 end
 
-title 'Ensure a log metric filter and alarm exist for security group changes'
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-3.10" do
+  title "Ensure a log metric filter and alarm exist for security group changes"
+  desc "Real-time monitoring of API calls can be achieved by directing
+CloudTrail Logs to CloudWatch Logs and establishing corresponding metric
+filters and alarms"
   tag impact_score: 0.7
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['3.10']
@@ -822,8 +870,10 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure CloudTrail log file validation is enabled"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-2.2" do
+  title "Ensure CloudTrail log file validation is enabled"
+  desc "CloudTrail log file validation creates a digitally signed digest file
+containing a hash of each log that CloudTrail writes to S3"
   tag impact_score: 0.7
   tag nist_csf: ['PR.PT-1','DE.AE-3']
   tag cis_aws: ['2.2']
@@ -844,8 +894,10 @@ control "uchi-cis-aws-foundations" do
   end
 end
 
-title "Ensure the S3 bucket CloudTrail logs to is not publicly accessible"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-2.3" do
+  title "Ensure the S3 bucket CloudTrail logs to is not publicly accessible"
+  desc "CloudTrail logs a record of every API call made in your AWS account
+these logs file are stored in an S3 bucket"
   tag impact_score: 0.3
   tag nist_csf: ['PR.PT-1','DE.AE-3']
   tag cis_aws: ['2.3']
@@ -868,8 +920,10 @@ control "uchi-cis-aws-foundations" do
   end
 
 
-title "Ensure CloudTrail trails are integrated with CloudWatch Logs"
-control  "uchi-cis-aws-foundations" do
+control  "uchi-cis-aws-foundations-2.4" do
+  title "Ensure CloudTrail trails are integrated with CloudWatch Logs"
+  desc "AWS CloudTrail is a web service that records AWS API calls made in a
+given AWS account"
   tag impact_score: 0.3
   tag nist_csf: ['ID.AM-4','DE.CM-7']
   tag cis_aws: ['2.4']
