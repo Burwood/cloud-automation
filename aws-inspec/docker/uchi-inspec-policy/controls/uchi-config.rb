@@ -1,5 +1,7 @@
-title "Ensure AWS Config is enabled in all regions"
-control "uchi-cis-aws-foundations" do
+control "uchi-cis-aws-foundations-2.5" do
+  title "Ensure AWS Config is enabled in all regions"
+  desc "AWS Config is a web service that performs configuration management of
+supported AWS resources within your account and delivers log files to you"
    tag impact_score: 0.3
    tag nist_csf: ['ID.AM-1','PR-DS-3','PR.PT-1','PR-DS-4']
    tag cis_aws: ['2.5']
